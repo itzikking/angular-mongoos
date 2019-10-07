@@ -5,6 +5,7 @@ const PostsSchema = require('../models/psots')
 const AuthorSchema = require('../models/author')
 
 
+
 //Get all
 router.get('/', async (req, res, next) => {
   try {
