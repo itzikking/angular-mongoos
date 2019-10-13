@@ -31,7 +31,7 @@ router.post('/', async (req, res, next) => {
   })
   try {
     const newPosts = await postsSchema.save()
-    res.status(201).json(newPosts)
+    res.status(201).json('save')
     console.log('newPosts', newPosts);
 
   } catch (err) {

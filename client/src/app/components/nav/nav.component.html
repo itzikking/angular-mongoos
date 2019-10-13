@@ -1,13 +1,22 @@
-<!-- <div>
-  <mat-button-toggle #toggleBtn>Togle</mat-button-toggle>
-  {{ toggleBtn.checked }}
-</div> -->
-
 <div>
-  <mat-button-toggle-group #toggleGroup="matButtonToggleGroup" multiple>
-    <mat-button-toggle value="angular">Angular</mat-button-toggle>
-    <mat-button-toggle value="react">React</mat-button-toggle>
-    <mat-button-toggle value="vue">Vue</mat-button-toggle>
-  </mat-button-toggle-group>
-  {{ toggleGroup.value }}
+  <mat-toolbar>
+    <button
+      mat-raised-button
+      color="accent"
+      [routerLink]="['']"
+      preserveQueryParams
+      preserveFragment
+    >
+      Home
+    </button>
+    <button
+      mat-raised-button
+      color="accent"
+      [routerLink]="['posts']"
+      preserveQueryParams
+      preserveFragment
+    >
+      Posts
+    </button>
+  </mat-toolbar>
 </div>

@@ -1,4 +1,91 @@
-<h1>posts</h1>
-<div *ngFor="let post of posts">
-  {{ post | json }}
+<form class="example-form" (submit)="onaddpost(formdata)" #formdata="ngForm">
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="title"
+            #title="ngModel"
+            name="title"
+            ngModel
+            required
+            minlength="8"
+          />
+          <mat-error *ngIf="title.invalid"
+            >Please enter a post title.</mat-error
+          >
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <p>
+    <mat-form-field class="example-full-width">
+      <textarea
+        matInput
+        placeholder="body"
+        #body="ngModel"
+        name="body"
+        ngModel
+        required
+        minlength="8"
+      ></textarea>
+      <mat-error *ngIf="body.invalid">Please enter a post body.</mat-error>
+    </mat-form-field>
+  </p>
+
+  <table class="example-full-width" cellspacing="0">
+    <tr>
+      <td>
+        <mat-form-field class="example-full-width">
+          <input
+            matInput
+            placeholder="author"
+            #author="ngModel"
+            name="author"
+            ngModel
+            required
+            minlength="8"
+          />
+          <mat-error *ngIf="author.invalid"
+            >Please enter a post author.</mat-error
+          >
+        </mat-form-field>
+      </td>
+    </tr>
+  </table>
+
+  <button mat-raised-button type="submit" color="primary">SEND</button>
+</form>
+
+<div *ngFor="let post of posts" id="{{ post._id }}">
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{ post.author }}</mat-card-title>
+      <mat-card-subtitle>{{ post.title }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        {{ post.body }}
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="OnSharePost($event)"
+        id="{{ post._id }}"
+      >
+        SHARE
+      </button>
+      <button mat-raised-button color="warn" (click)="OnDeletePost(id)">
+        DELETE
+      </button>
+      <button mat-raised-button color="accent" (click)="OnEditPost(id)">
+        EDIT
+      </button>
+    </mat-card-actions>
+  </mat-card>
 </div>
