@@ -1,7 +1,5 @@
-const PostsSchema = require('../models/psots')
-const User = require('../models/user')
-
-
+const PostsSchema = require('../models/psots');
+const User = require('../models/user');
 
 const jwt = require('jsonwebtoken');
 const key = require('../models/key');
@@ -18,9 +16,7 @@ exports.Post_register = (req, res, next) => {
             .then(result => {
                 res.status(201).json({
                     message: "user created",
-                    token: jwt.sign({ email: user.email, role: user.role }, key.secret, {
-                        expiresIn: 86400 // expires in 24 hours
-                    })
+                    token: jwt.sign({ email: user.email, role: user.role }, key.secret)
                 })
             })
     } catch (err) {
@@ -30,8 +26,18 @@ exports.Post_register = (req, res, next) => {
 
 
 exports.Post_login = (req, res, next) => {
+    let username = req.body.username;
+    let password = req.body.password;
     try {
-        res.send("yofi")
+        const newuser = user.save()
+            .then(result => {
+                res.status(201).json({
+                    message: "user sing in",
+                    token: jwt.sign({ email: user.email, role: user.role }, key.secret, {
+                        expiresIn: 86400 // expires in 24 hours
+                    })
+                })
+            })
     } catch (err) {
         console.log(err);
     }

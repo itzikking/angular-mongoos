@@ -1,8 +1,5 @@
 const User = require('../models/user');
 
-
-
-
 ChackUsers = (req, res, next) => {
     let chack_Role = req.body.role;
     let chack_Email = req.body.email;
@@ -15,7 +12,7 @@ ChackUsers = (req, res, next) => {
         USER.then(results => {
             if (results) {
                 res.status(400).send("Fail -> Email is already taken!");
-                console.log("USER IN DATA");
+                console.log("USER already in");
                 return;
             }
             next()
@@ -30,7 +27,7 @@ ChackUsers = (req, res, next) => {
         USER.then(results => {
             if (results) {
                 res.status(400).send("Fail -> Email is already taken!");
-                console.log("ADMIN IN DATA");
+                console.log("ADMIN already in");
                 return;
             }
             next()

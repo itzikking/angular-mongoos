@@ -3,7 +3,15 @@ const User = require('../models/user');
 const key = require('../models/key');
 
 Token = (req, res, next) => {
-    let token = req.headers['x-access-token'];
+    console.log(token);
+    let username = req.body.username;
+    let password = req.body.password;
+
+    const USER = User.findOne({ username: username, password: password }, function (err, results) {
+        if (err) return handleError(err);
+        // console.log(results);
+    });
+
     if (!token) return res.status(403).json({ message: "No Token." });
 
     jwt.verify(token, key, (err, decoded) => {

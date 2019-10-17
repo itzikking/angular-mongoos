@@ -13,7 +13,7 @@ const Singup = require('../middleware/ChackUsers');
 
 router.post('/register', [Singup.ChackUsers], controller.Post_register);
 
-router.post('/login', [Singup.ChackUsers, Token], controller.Post_login);
+router.post('/login', [Token], controller.Post_login);
 
 
 module.exports = router;
