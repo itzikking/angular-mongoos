@@ -65,6 +65,7 @@
       <div mat-card-avatar class="example-header-image"></div>
       <mat-card-title>{{ post.author }}</mat-card-title>
       <mat-card-subtitle>{{ post.title }}</mat-card-subtitle>
+      <mat-card-subtitle>{{ post._id }}</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
       <p>
@@ -72,15 +73,10 @@
       </p>
     </mat-card-content>
     <mat-card-actions>
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="OnSharePost($event)"
-        id="{{ post._id }}"
-      >
+      <button mat-raised-button color="primary" (click)="OnSharePost()">
         SHARE
       </button>
-      <button mat-raised-button color="warn" (click)="OnDeletePost(id)">
+      <button mat-raised-button color="warn" (click)="OnDeletePost(post._id)">
         DELETE
       </button>
       <button mat-raised-button color="accent" (click)="OnEditPost(id)">

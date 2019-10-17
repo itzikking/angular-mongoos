@@ -27,13 +27,13 @@ router.post('/', async (req, res, next) => {
   const postsSchema = new PostsSchema({
     title: req.body.title,
     body: req.body.body,
-    author: req.body.author
+    author: req.body.author,
   })
   try {
-    const newPosts = await postsSchema.save()
-    res.status(201).json('save')
-    console.log('newPosts', newPosts);
-
+    const newPosts = await postsSchema.save().then(result => {
+      console.log(result._id);
+      res.status(201).json({ id: result._id })
+    })
   } catch (err) {
     res.status(400).json({ message: err.message })
   }
@@ -59,7 +59,7 @@ router.patch('/:id', getPosts, async (req, res, next) => {
 })
 
 //Deleting one
-router.delete('/:id', getPosts, async (req, res, next) => {
+router.delete('/delete/:id', getPosts, async (req, res, next) => {
   try {
     await res.postsSchema.remove()
     res.json({ message: 'Post Deleted' })
