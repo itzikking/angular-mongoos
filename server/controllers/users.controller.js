@@ -1,18 +1,12 @@
-const PostsSchema = require('./models/psots')
-const User = require('./models/user')
+const PostsSchema = require('../models/psots')
+const User = require('../models/user')
 
 
 
 const jwt = require('jsonwebtoken');
-const key = require('./models/key');
+const key = require('../models/key');
 
 exports.Post_register = (req, res, next) => {
-
-    let username = req.body.username
-    let password = req.body.password
-    let email = req.body.email
-    // console.log(req.body);
-
     const user = new User({
         username: req.body.username,
         password: req.body.password,
@@ -24,7 +18,7 @@ exports.Post_register = (req, res, next) => {
             .then(result => {
                 res.status(201).json({
                     message: "user created",
-                    token: jwt.sign({ email: user.email }, key.secret, {
+                    token: jwt.sign({ email: user.email, role: user.role }, key.secret, {
                         expiresIn: 86400 // expires in 24 hours
                     })
                 })

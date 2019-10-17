@@ -6,7 +6,7 @@ const PostsSchema = require('../models/psots');
 const User = require('../models/user');
 const author = require('../models/author');
 //Middlewares
-const controller = require('../controller');
+const controller = require('../controllers/users.controller');
 const Token = require('../middleware/Token');
 const Singup = require('../middleware/ChackUsers');
 
