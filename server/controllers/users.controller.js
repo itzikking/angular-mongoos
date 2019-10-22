@@ -8,6 +8,8 @@ exports.Post_register = (req, res, next) => {
     const user = new User({
         username: req.body.username,
         password: req.body.password,
+        gender: req.body.gender,
+        age: req.body.age,
         email: req.body.email,
         role: req.body.role
     })
@@ -15,7 +17,7 @@ exports.Post_register = (req, res, next) => {
         const newuser = user.save()
             .then(result => {
                 res.status(201).json({
-                    message: "user created",
+                    message: "hellow" + username,
                     token: jwt.sign({ email: user.email, role: user.role }, key.secret)
                 })
             })

@@ -34,8 +34,9 @@ ChackUsers = (req, res, next) => {
         }).catch(err => {
             res.status(403).send("Fail -> Samting worng" + err);
         })
+    } else if (chack_Role === undefined) {
+        res.status(403).send("Fail -> Samting worng");
     }
-
 };
 const Singup = {};
 Singup.ChackUsers = ChackUsers;

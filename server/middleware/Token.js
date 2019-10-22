@@ -3,16 +3,15 @@ const User = require('../models/user');
 const key = require('../models/key');
 
 Token = (req, res, next) => {
-    console.log(token);
+    let token = req.headers.token;
     let username = req.body.username;
     let password = req.body.password;
 
-    const USER = User.findOne({ username: username, password: password }, function (err, results) {
+    const USER = User.findOne({ username: username, }, function (err, results) {
         if (err) return handleError(err);
-        // console.log(results);
+        console.log(results);
     });
-
-    if (!token) return res.status(403).json({ message: "No Token." });
+    // if (!token) return res.status(403).json({ message: "No Token." });
 
     jwt.verify(token, key, (err, decoded) => {
         if (err) {
@@ -21,8 +20,6 @@ Token = (req, res, next) => {
             });
         }
         console.log("decoded" + decoded);
-
-        // req.User = decoded.id;
         next();
     }).catch(err => {
         res.status(403).send("Fail -> Samting worng" + err);
