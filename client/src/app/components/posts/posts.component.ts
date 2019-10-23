@@ -1,7 +1,14 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import { Post } from "./post";
 import { PostsService } from "../../services/posts.service";
 import { NgForm } from "@angular/forms";
+// import { MAT_DIALOG_DATA, MatDialogRef } from "@angular/material";
+
+// export interface Edit {
+//   title: string;
+//   body: string;
+//   author: string;
+// }
 
 @Component({
   selector: "app-posts",
@@ -13,6 +20,7 @@ export class PostsComponent implements OnInit {
   title: "";
   body: "";
   author: "";
+  // dialog: any;
 
   constructor(private _PostsService: PostsService) {}
 
@@ -47,7 +55,29 @@ export class PostsComponent implements OnInit {
       console.log(result), err => console.log(err);
     });
   };
-  OnEditPost(id) {
-    console.log("OnEditPost:" + id);
-  }
+  //   OnEditPost(): void {
+  //     const dialogRef = this.dialog.open(PostsComponent, {
+  //       width: "250px",
+  //       data: { title: this.title, body: this.body }
+  //     });
+
+  //     dialogRef.afterClosed().subscribe(result => {
+  //       console.log("The dialog was closed");
+  //       this.body = result;
+  //     });
+  //   }
+  // }
+  // @Component({
+  //   selector: "app-posts",
+  //   templateUrl: "./posts.component.html"
+  // })
+  // export class DialogOverviewExampleDialog {
+  //   constructor(
+  //     public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+  //     @Inject(MAT_DIALOG_DATA) public data: Edit
+  //   ) {}
+
+  //   onNoClick(): void {
+  //     this.dialogRef.close();
+  //   }
 }

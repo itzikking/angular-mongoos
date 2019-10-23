@@ -7,6 +7,10 @@ import {
   MatToolbarModule,
   MatFormFieldModule,
   MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  // MatDialogModule,
+  // MAT_DIALOG_DATA
 } from "@angular/material";
 
 const MaterialComponents = [
@@ -17,6 +21,10 @@ const MaterialComponents = [
   MatToolbarModule,
   MatFormFieldModule,
   MatInputModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  // MatDialogModule,
+  // MAT_DIALOG_DATA
 ];
 
 @NgModule({
